@@ -1,0 +1,233 @@
+{
+  "run_id": "20261103-165552-993ded",
+  "status": "incomplete",
+  "reason": "gave_up",
+  "message": "全部 4 个候选均不可行：最低费用 5（预算 3），最短工时 7h（可用 56h）",
+  "llm": "mock",
+  "attempt": 1,
+  "request": {
+    "topic": "运动相机新品",
+    "budget": 3,
+    "deadline": "2026-11-10",
+    "today": "2026-11-03"
+  },
+  "idempotency_key": "37bd21df7af58b58",
+  "task_plan": [
+    {
+      "stage": "检索素材",
+      "tool": "search_materials",
+      "status": "success",
+      "calls": 1,
+      "failed_calls": 0
+    },
+    {
+      "stage": "成本估算",
+      "tool": "estimate_cost",
+      "status": "success",
+      "calls": 4,
+      "failed_calls": 0
+    },
+    {
+      "stage": "生成脚本",
+      "tool": "generate_script",
+      "status": "pending",
+      "calls": 0,
+      "failed_calls": 0
+    },
+    {
+      "stage": "保存方案",
+      "tool": "save_plan",
+      "status": "pending",
+      "calls": 0,
+      "failed_calls": 0
+    }
+  ],
+  "steps": [
+    {
+      "index": 1,
+      "attempt": 1,
+      "action": "search_materials",
+      "args": {
+        "topic": "运动相机新品"
+      },
+      "status": "success",
+      "summary": "找到 4 个素材：M01(质量9/授权10)、M02(质量7/授权6)、M03(质量6/授权4)、M05(质量5/授权3)",
+      "reason": "尚无素材，先按主题检索"
+    },
+    {
+      "index": 2,
+      "attempt": 1,
+      "action": "estimate_cost",
+      "args": {
+        "material_id": "M01",
+        "script_engine": "ai"
+      },
+      "status": "success",
+      "summary": "M01+ai 费用 12/预算 3，工时 21h/可用 56h，超预算 9",
+      "reason": "先估算质量最高的候选 M01"
+    },
+    {
+      "index": 3,
+      "attempt": 1,
+      "action": "estimate_cost",
+      "args": {
+        "material_id": "M02",
+        "script_engine": "ai"
+      },
+      "status": "success",
+      "summary": "M02+ai 费用 8/预算 3，工时 9h/可用 56h，超预算 5",
+      "reason": "M01 估算 12 超出预算 3，改选次优候选 M02（质量 7）"
+    },
+    {
+      "index": 4,
+      "attempt": 1,
+      "action": "estimate_cost",
+      "args": {
+        "material_id": "M03",
+        "script_engine": "ai"
+      },
+      "status": "success",
+      "summary": "M03+ai 费用 6/预算 3，工时 11h/可用 56h，超预算 3",
+      "reason": "M02 估算 8 超出预算 3，改选次优候选 M03（质量 6）"
+    },
+    {
+      "index": 5,
+      "attempt": 1,
+      "action": "estimate_cost",
+      "args": {
+        "material_id": "M05",
+        "script_engine": "ai"
+      },
+      "status": "success",
+      "summary": "M05+ai 费用 5/预算 3，工时 7h/可用 56h，超预算 2",
+      "reason": "M03 估算 6 超出预算 3，改选次优候选 M05（质量 5）"
+    },
+    {
+      "index": 6,
+      "attempt": 1,
+      "action": "give_up",
+      "args": {
+        "message": "全部 4 个候选均不可行：最低费用 5（预算 3），最短工时 7h（可用 56h）",
+        "gap": {
+          "budget": 3,
+          "min_cost": 5,
+          "budget_gap": 2,
+          "available_hours": 56,
+          "min_hours": 7,
+          "hours_gap": 0,
+          "script_engine": "ai"
+        }
+      },
+      "status": "final",
+      "summary": "全部 4 个候选均不可行：最低费用 5（预算 3），最短工时 7h（可用 56h）",
+      "reason": "所有候选都已估算且不可行，没有替代方案，返回未完成及缺口"
+    }
+  ],
+  "tool_results": {
+    "search_materials": {
+      "id": "search_1",
+      "topic": "运动相机新品",
+      "count": 4,
+      "materials": [
+        {
+          "id": "M01",
+          "title": "达人合拍短视频（60s）",
+          "format": "short_video",
+          "quality": 9,
+          "license_cost": 10,
+          "production_hours": 20
+        },
+        {
+          "id": "M02",
+          "title": "图文种草海报套装（6张）",
+          "format": "image_post",
+          "quality": 7,
+          "license_cost": 6,
+          "production_hours": 8
+        },
+        {
+          "id": "M03",
+          "title": "直播切片混剪（3条）",
+          "format": "short_video",
+          "quality": 6,
+          "license_cost": 4,
+          "production_hours": 10
+        },
+        {
+          "id": "M05",
+          "title": "用户 UGC 精选合集",
+          "format": "image_post",
+          "quality": 5,
+          "license_cost": 3,
+          "production_hours": 6
+        }
+      ]
+    },
+    "estimate_cost": {
+      "id": "est_4",
+      "material_id": "M05",
+      "script_engine": "ai",
+      "breakdown": {
+        "license_cost": 3,
+        "script_fee": 2
+      },
+      "total_cost": 5,
+      "total_hours": 7,
+      "budget": 3,
+      "available_hours": 56,
+      "within_budget": false,
+      "within_deadline": true,
+      "budget_gap": 2,
+      "hours_gap": 0
+    }
+  },
+  "cost": {
+    "budget": 3,
+    "plan_total": null,
+    "remaining": null,
+    "estimates": [
+      {
+        "id": "est_1",
+        "material_id": "M01",
+        "script_engine": "ai",
+        "total_cost": 12,
+        "within_budget": false,
+        "within_deadline": true
+      },
+      {
+        "id": "est_2",
+        "material_id": "M02",
+        "script_engine": "ai",
+        "total_cost": 8,
+        "within_budget": false,
+        "within_deadline": true
+      },
+      {
+        "id": "est_3",
+        "material_id": "M03",
+        "script_engine": "ai",
+        "total_cost": 6,
+        "within_budget": false,
+        "within_deadline": true
+      },
+      {
+        "id": "est_4",
+        "material_id": "M05",
+        "script_engine": "ai",
+        "total_cost": 5,
+        "within_budget": false,
+        "within_deadline": true
+      }
+    ]
+  },
+  "saved_plan": null,
+  "gap": {
+    "budget": 3,
+    "min_cost": 5,
+    "budget_gap": 2,
+    "available_hours": 56,
+    "min_hours": 7,
+    "hours_gap": 0,
+    "script_engine": "ai"
+  }
+}

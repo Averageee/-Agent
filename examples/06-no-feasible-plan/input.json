@@ -1,0 +1,11 @@
+{
+  "name": "06-no-feasible-plan",
+  "scenario": "无可行方案 → 未完成及缺口",
+  "request": {
+    "topic": "运动相机新品",
+    "deadline": "2026-11-10",
+    "today": "2026-11-03",
+    "budget": 3
+  },
+  "command": "python run.py --topic 运动相机新品 --budget 3 --deadline 2026-11-10 --today 2026-11-03"
+}

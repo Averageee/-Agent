@@ -1,0 +1,11 @@
+{
+  "name": "01-normal",
+  "scenario": "正常完成",
+  "request": {
+    "topic": "运动相机新品",
+    "deadline": "2026-11-10",
+    "today": "2026-11-03",
+    "budget": 20
+  },
+  "command": "python run.py --topic 运动相机新品 --budget 20 --deadline 2026-11-10 --today 2026-11-03"
+}

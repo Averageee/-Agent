@@ -1,0 +1,11 @@
+{
+  "name": "05-budget-overrun",
+  "scenario": "预算超限：初始 12 → 改选 8",
+  "request": {
+    "topic": "运动相机新品",
+    "deadline": "2026-11-10",
+    "today": "2026-11-03",
+    "budget": 10
+  },
+  "command": "python run.py --topic 运动相机新品 --budget 10 --deadline 2026-11-10 --today 2026-11-03"
+}

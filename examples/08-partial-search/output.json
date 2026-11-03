@@ -1,0 +1,228 @@
+{
+  "run_id": "20261103-165552-ebed6c",
+  "status": "completed",
+  "reason": "finished",
+  "message": "已保存方案 plan_40cc56ab，费用 6/18",
+  "llm": "mock",
+  "attempt": 1,
+  "request": {
+    "topic": "运动相机新品",
+    "budget": 18,
+    "deadline": "2026-11-10",
+    "today": "2026-11-03"
+  },
+  "idempotency_key": "40cc56ab0c8e28ed",
+  "task_plan": [
+    {
+      "stage": "检索素材",
+      "tool": "search_materials",
+      "status": "partial",
+      "calls": 1,
+      "failed_calls": 0
+    },
+    {
+      "stage": "成本估算",
+      "tool": "estimate_cost",
+      "status": "success",
+      "calls": 1,
+      "failed_calls": 0
+    },
+    {
+      "stage": "生成脚本",
+      "tool": "generate_script",
+      "status": "success",
+      "calls": 1,
+      "failed_calls": 0
+    },
+    {
+      "stage": "保存方案",
+      "tool": "save_plan",
+      "status": "success",
+      "calls": 1,
+      "failed_calls": 0
+    }
+  ],
+  "steps": [
+    {
+      "index": 1,
+      "attempt": 1,
+      "action": "search_materials",
+      "args": {
+        "topic": "运动相机新品"
+      },
+      "status": "partial",
+      "summary": "找到 2 个素材：M03(质量6/授权4)、M05(质量5/授权3)；[注入故障] 部分素材源不可用，只返回部分结果",
+      "reason": "尚无素材，先按主题检索"
+    },
+    {
+      "index": 2,
+      "attempt": 1,
+      "action": "estimate_cost",
+      "args": {
+        "material_id": "M03",
+        "script_engine": "ai"
+      },
+      "status": "success",
+      "summary": "M03+ai 费用 6/预算 18，工时 11h/可用 56h，可行",
+      "reason": "先估算质量最高的候选 M03（检索仅部分成功，只在返回的素材中选择）"
+    },
+    {
+      "index": 3,
+      "attempt": 1,
+      "action": "generate_script",
+      "args": {
+        "material_id": "M03",
+        "engine": "ai"
+      },
+      "status": "success",
+      "summary": "scr_1 脚本生成成功（ai 引擎，4 段）",
+      "reason": "M03 估算 6 ≤ 预算 18 且工期可行，生成脚本（ai）"
+    },
+    {
+      "index": 4,
+      "attempt": 1,
+      "action": "save_plan",
+      "args": {
+        "material_id": "M03",
+        "script_id": "scr_1",
+        "estimate_id": "est_1"
+      },
+      "status": "success",
+      "summary": "已保存 plan_40cc56ab，费用 6",
+      "reason": "预算、工期、脚本均已就绪，保存方案"
+    },
+    {
+      "index": 5,
+      "attempt": 1,
+      "action": "finish",
+      "args": {
+        "summary": "已保存方案 plan_40cc56ab，费用 6/18"
+      },
+      "status": "final",
+      "summary": "已保存方案 plan_40cc56ab，费用 6/18",
+      "reason": "方案已保存，任务完成"
+    }
+  ],
+  "tool_results": {
+    "search_materials": {
+      "id": "search_1",
+      "topic": "运动相机新品",
+      "count": 2,
+      "materials": [
+        {
+          "id": "M03",
+          "title": "直播切片混剪（3条）",
+          "format": "short_video",
+          "quality": 6,
+          "license_cost": 4,
+          "production_hours": 10
+        },
+        {
+          "id": "M05",
+          "title": "用户 UGC 精选合集",
+          "format": "image_post",
+          "quality": 5,
+          "license_cost": 3,
+          "production_hours": 6
+        }
+      ],
+      "partial": true,
+      "warning": "[注入故障] 部分素材源不可用，只返回部分结果"
+    },
+    "estimate_cost": {
+      "id": "est_1",
+      "material_id": "M03",
+      "script_engine": "ai",
+      "breakdown": {
+        "license_cost": 4,
+        "script_fee": 2
+      },
+      "total_cost": 6,
+      "total_hours": 11,
+      "budget": 18,
+      "available_hours": 56,
+      "within_budget": true,
+      "within_deadline": true,
+      "budget_gap": 0,
+      "hours_gap": 0
+    },
+    "generate_script": {
+      "id": "scr_1",
+      "material_id": "M03",
+      "engine": "ai",
+      "title": "运动相机新品｜直播切片混剪（3条）",
+      "outline": [
+        "开场：一句话点出「运动相机新品」的核心卖点",
+        "主体：基于素材《直播切片混剪（3条）》展开 3 个使用场景",
+        "转化：限时福利 + 评论区互动引导",
+        "结尾：品牌口号与关注引导"
+      ],
+      "note": "AI 生成初稿"
+    },
+    "save_plan": {
+      "id": "plan_40cc56ab",
+      "idempotent_hit": false,
+      "path": ".agent_data\\examples\\saved\\40cc56ab0c8e28ed.json",
+      "total_cost": 6
+    }
+  },
+  "cost": {
+    "budget": 18,
+    "plan_total": 6,
+    "remaining": 12,
+    "estimates": [
+      {
+        "id": "est_1",
+        "material_id": "M03",
+        "script_engine": "ai",
+        "total_cost": 6,
+        "within_budget": true,
+        "within_deadline": true
+      }
+    ]
+  },
+  "saved_plan": {
+    "plan_id": "plan_40cc56ab",
+    "idempotency_key": "40cc56ab0c8e28ed",
+    "run_id": "20261103-165552-ebed6c",
+    "topic": "运动相机新品",
+    "budget": 18,
+    "deadline": "2026-11-10",
+    "material": {
+      "id": "M03",
+      "title": "直播切片混剪（3条）",
+      "format": "short_video",
+      "quality": 6,
+      "license_cost": 4,
+      "production_hours": 10
+    },
+    "script": {
+      "id": "scr_1",
+      "material_id": "M03",
+      "engine": "ai",
+      "title": "运动相机新品｜直播切片混剪（3条）",
+      "outline": [
+        "开场：一句话点出「运动相机新品」的核心卖点",
+        "主体：基于素材《直播切片混剪（3条）》展开 3 个使用场景",
+        "转化：限时福利 + 评论区互动引导",
+        "结尾：品牌口号与关注引导"
+      ],
+      "note": "AI 生成初稿"
+    },
+    "cost": {
+      "total_cost": 6,
+      "breakdown": {
+        "license_cost": 4,
+        "script_fee": 2
+      },
+      "budget": 18,
+      "remaining": 12
+    },
+    "schedule": {
+      "total_hours": 11,
+      "available_hours": 56
+    },
+    "saved_at": "2026-11-03T16:55:52"
+  },
+  "gap": null
+}

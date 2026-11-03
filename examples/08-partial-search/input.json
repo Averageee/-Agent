@@ -1,0 +1,14 @@
+{
+  "name": "08-partial-search",
+  "scenario": "检索部分成功 → 只在返回素材中规划",
+  "request": {
+    "topic": "运动相机新品",
+    "deadline": "2026-11-10",
+    "today": "2026-11-03",
+    "budget": 18
+  },
+  "fail": [
+    "search_materials:partial"
+  ],
+  "command": "python run.py --topic 运动相机新品 --budget 18 --deadline 2026-11-10 --today 2026-11-03 --fail search_materials:partial"
+}

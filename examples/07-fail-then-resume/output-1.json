@@ -1,0 +1,207 @@
+{
+  "run_id": "20261103-165552-d19fe2",
+  "status": "incomplete",
+  "reason": "gave_up",
+  "message": "脚本生成在 AI 与模板引擎下均失败；已成功的检索与估算已保留，可用 --resume 续跑",
+  "llm": "mock",
+  "attempt": 1,
+  "request": {
+    "topic": "运动相机新品",
+    "budget": 15,
+    "deadline": "2026-11-10",
+    "today": "2026-11-03"
+  },
+  "idempotency_key": "4bfa41270ef9cfc4",
+  "task_plan": [
+    {
+      "stage": "检索素材",
+      "tool": "search_materials",
+      "status": "success",
+      "calls": 1,
+      "failed_calls": 0
+    },
+    {
+      "stage": "成本估算",
+      "tool": "estimate_cost",
+      "status": "success",
+      "calls": 2,
+      "failed_calls": 0
+    },
+    {
+      "stage": "生成脚本",
+      "tool": "generate_script",
+      "status": "failed",
+      "calls": 2,
+      "failed_calls": 2
+    },
+    {
+      "stage": "保存方案",
+      "tool": "save_plan",
+      "status": "pending",
+      "calls": 0,
+      "failed_calls": 0
+    }
+  ],
+  "steps": [
+    {
+      "index": 1,
+      "attempt": 1,
+      "action": "search_materials",
+      "args": {
+        "topic": "运动相机新品"
+      },
+      "status": "success",
+      "summary": "找到 4 个素材：M01(质量9/授权10)、M02(质量7/授权6)、M03(质量6/授权4)、M05(质量5/授权3)",
+      "reason": "尚无素材，先按主题检索"
+    },
+    {
+      "index": 2,
+      "attempt": 1,
+      "action": "estimate_cost",
+      "args": {
+        "material_id": "M01",
+        "script_engine": "ai"
+      },
+      "status": "success",
+      "summary": "M01+ai 费用 12/预算 15，工时 21h/可用 56h，可行",
+      "reason": "先估算质量最高的候选 M01"
+    },
+    {
+      "index": 3,
+      "attempt": 1,
+      "action": "generate_script",
+      "args": {
+        "material_id": "M01",
+        "engine": "ai"
+      },
+      "status": "failed",
+      "summary": "失败：[注入故障] generate_script 服务异常",
+      "reason": "M01 估算 12 ≤ 预算 15 且工期可行，生成脚本（ai）"
+    },
+    {
+      "index": 4,
+      "attempt": 1,
+      "action": "estimate_cost",
+      "args": {
+        "material_id": "M01",
+        "script_engine": "template"
+      },
+      "status": "success",
+      "summary": "M01+template 费用 11/预算 15，工时 22h/可用 56h，可行",
+      "reason": "AI 脚本引擎失败，改用模板引擎，费用结构变化，需重新估算 M01"
+    },
+    {
+      "index": 5,
+      "attempt": 1,
+      "action": "generate_script",
+      "args": {
+        "material_id": "M01",
+        "engine": "template"
+      },
+      "status": "failed",
+      "summary": "失败：[注入故障] generate_script 服务异常",
+      "reason": "M01 估算 11 ≤ 预算 15 且工期可行，生成脚本（template）"
+    },
+    {
+      "index": 6,
+      "attempt": 1,
+      "action": "give_up",
+      "args": {
+        "message": "脚本生成在 AI 与模板引擎下均失败；已成功的检索与估算已保留，可用 --resume 续跑",
+        "gap": {
+          "failed_step": "generate_script",
+          "material_id": "M01"
+        }
+      },
+      "status": "final",
+      "summary": "脚本生成在 AI 与模板引擎下均失败；已成功的检索与估算已保留，可用 --resume 续跑",
+      "reason": "两种脚本引擎都不可用，没有替代方案，停止并保留成功结果"
+    }
+  ],
+  "tool_results": {
+    "search_materials": {
+      "id": "search_1",
+      "topic": "运动相机新品",
+      "count": 4,
+      "materials": [
+        {
+          "id": "M01",
+          "title": "达人合拍短视频（60s）",
+          "format": "short_video",
+          "quality": 9,
+          "license_cost": 10,
+          "production_hours": 20
+        },
+        {
+          "id": "M02",
+          "title": "图文种草海报套装（6张）",
+          "format": "image_post",
+          "quality": 7,
+          "license_cost": 6,
+          "production_hours": 8
+        },
+        {
+          "id": "M03",
+          "title": "直播切片混剪（3条）",
+          "format": "short_video",
+          "quality": 6,
+          "license_cost": 4,
+          "production_hours": 10
+        },
+        {
+          "id": "M05",
+          "title": "用户 UGC 精选合集",
+          "format": "image_post",
+          "quality": 5,
+          "license_cost": 3,
+          "production_hours": 6
+        }
+      ]
+    },
+    "estimate_cost": {
+      "id": "est_2",
+      "material_id": "M01",
+      "script_engine": "template",
+      "breakdown": {
+        "license_cost": 10,
+        "script_fee": 1
+      },
+      "total_cost": 11,
+      "total_hours": 22,
+      "budget": 15,
+      "available_hours": 56,
+      "within_budget": true,
+      "within_deadline": true,
+      "budget_gap": 0,
+      "hours_gap": 0
+    }
+  },
+  "cost": {
+    "budget": 15,
+    "plan_total": null,
+    "remaining": null,
+    "estimates": [
+      {
+        "id": "est_1",
+        "material_id": "M01",
+        "script_engine": "ai",
+        "total_cost": 12,
+        "within_budget": true,
+        "within_deadline": true
+      },
+      {
+        "id": "est_2",
+        "material_id": "M01",
+        "script_engine": "template",
+        "total_cost": 11,
+        "within_budget": true,
+        "within_deadline": true
+      }
+    ]
+  },
+  "saved_plan": null,
+  "gap": {
+    "failed_step": "generate_script",
+    "material_id": "M01"
+  }
+}

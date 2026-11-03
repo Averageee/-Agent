@@ -1,0 +1,12 @@
+{
+  "name": "09-max-steps",
+  "scenario": "达到步数上限 → 明确未完成",
+  "request": {
+    "topic": "运动相机新品",
+    "deadline": "2026-11-10",
+    "today": "2026-11-03",
+    "budget": 16
+  },
+  "max_steps": 2,
+  "command": "python run.py --topic 运动相机新品 --budget 16 --deadline 2026-11-10 --today 2026-11-03 --max-steps 2"
+}

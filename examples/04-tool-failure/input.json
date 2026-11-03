@@ -1,0 +1,14 @@
+{
+  "name": "04-tool-failure",
+  "scenario": "脚本工具失败 → 改用模板引擎并重新估算",
+  "request": {
+    "topic": "运动相机新品",
+    "deadline": "2026-11-10",
+    "today": "2026-11-03",
+    "budget": 12
+  },
+  "fail": [
+    "generate_script:error:1"
+  ],
+  "command": "python run.py --topic 运动相机新品 --budget 12 --deadline 2026-11-10 --today 2026-11-03 --fail generate_script:error:1"
+}

@@ -1,0 +1,11 @@
+{
+  "_note": "合成素材库，数据均为虚构，费用单位为模拟单位，工时单位为小时",
+  "materials": [
+    {"id": "M01", "title": "达人合拍短视频（60s）", "format": "short_video", "topics": ["运动相机", "新品", "户外"], "quality": 9, "license_cost": 10, "production_hours": 20},
+    {"id": "M02", "title": "图文种草海报套装（6张）", "format": "image_post", "topics": ["运动相机", "新品", "种草", "户外"], "quality": 7, "license_cost": 6, "production_hours": 8},
+    {"id": "M03", "title": "直播切片混剪（3条）", "format": "short_video", "topics": ["运动相机", "直播", "户外"], "quality": 6, "license_cost": 4, "production_hours": 10},
+    {"id": "M04", "title": "品牌 TVC 改编版（90s）", "format": "video", "topics": ["品牌周年", "TVC"], "quality": 10, "license_cost": 18, "production_hours": 40},
+    {"id": "M05", "title": "用户 UGC 精选合集", "format": "image_post", "topics": ["运动相机", "UGC", "户外", "露营"], "quality": 5, "license_cost": 3, "production_hours": 6},
+    {"id": "M06", "title": "露营 Vlog 系列（3集）", "format": "short_video", "topics": ["露营", "户外"], "quality": 8, "license_cost": 9, "production_hours": 16}
+  ]
+}

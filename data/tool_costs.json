@@ -1,0 +1,15 @@
+{
+  "_note": "工具费用与耗时表。方案费用 = 素材授权费 + 脚本引擎费用；方案工时 = 素材制作工时 + 脚本引擎工时",
+  "work_hours_per_day": 8,
+  "tools": {
+    "search_materials": {"fee": 0, "hours": 0},
+    "estimate_cost": {"fee": 0, "hours": 0},
+    "generate_script": {
+      "engines": {
+        "ai": {"fee": 2, "hours": 1, "desc": "模型生成初稿"},
+        "template": {"fee": 1, "hours": 2, "desc": "模板填充，需人工润色"}
+      }
+    },
+    "save_plan": {"fee": 0, "hours": 0}
+  }
+}

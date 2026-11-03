@@ -1,0 +1,15 @@
+{
+  "name": "07-fail-then-resume",
+  "scenario": "两种引擎均失败 → 停止；--resume 续跑只补失败步骤",
+  "request": {
+    "topic": "运动相机新品",
+    "deadline": "2026-11-10",
+    "today": "2026-11-03",
+    "budget": 15
+  },
+  "fail": [
+    "generate_script:error:2"
+  ],
+  "resume": true,
+  "command": "python run.py --topic 运动相机新品 --budget 15 --deadline 2026-11-10 --today 2026-11-03 --fail generate_script:error:2"
+}

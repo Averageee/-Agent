@@ -1,0 +1,11 @@
+{
+  "name": "02-repeat",
+  "scenario": "重复执行（幂等命中）",
+  "request": {
+    "topic": "运动相机新品",
+    "deadline": "2026-11-10",
+    "today": "2026-11-03",
+    "budget": 20
+  },
+  "command": "python run.py --topic 运动相机新品 --budget 20 --deadline 2026-11-10 --today 2026-11-03"
+}

@@ -1,0 +1,9 @@
+{
+  "name": "03-missing-input",
+  "scenario": "缺预算与截止时间",
+  "request": {
+    "topic": "运动相机新品",
+    "today": "2026-11-03"
+  },
+  "command": "python run.py --topic 运动相机新品 --today 2026-11-03"
+}

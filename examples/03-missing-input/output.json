@@ -1,0 +1,61 @@
+{
+  "run_id": "20261103-165552-a10a18",
+  "status": "incomplete",
+  "reason": "invalid_input",
+  "message": "缺少 budget、deadline；未调用任何工具，请补全后重试",
+  "llm": "mock",
+  "attempt": 1,
+  "request": {
+    "topic": "运动相机新品",
+    "budget": null,
+    "deadline": null,
+    "today": "2026-11-03"
+  },
+  "idempotency_key": null,
+  "task_plan": [
+    {
+      "stage": "检索素材",
+      "tool": "search_materials",
+      "status": "pending",
+      "calls": 0,
+      "failed_calls": 0
+    },
+    {
+      "stage": "成本估算",
+      "tool": "estimate_cost",
+      "status": "pending",
+      "calls": 0,
+      "failed_calls": 0
+    },
+    {
+      "stage": "生成脚本",
+      "tool": "generate_script",
+      "status": "pending",
+      "calls": 0,
+      "failed_calls": 0
+    },
+    {
+      "stage": "保存方案",
+      "tool": "save_plan",
+      "status": "pending",
+      "calls": 0,
+      "failed_calls": 0
+    }
+  ],
+  "steps": [],
+  "tool_results": {},
+  "cost": {
+    "budget": null,
+    "plan_total": null,
+    "remaining": null,
+    "estimates": []
+  },
+  "saved_plan": null,
+  "gap": {
+    "missing_fields": [
+      "budget",
+      "deadline"
+    ],
+    "invalid_fields": {}
+  }
+}
